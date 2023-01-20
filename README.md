@@ -56,7 +56,7 @@ Berikut informasi pada dataset :
 
 + Dataset memiliki format CSV (Comma-Seperated Values).
 + Dataset memiliki 10000 sample dengan 17 fitur.
-+ Dataset memiliki 17 fitur bertipe int64 dan 1 fitur bertipe object.
++ Dataset memiliki 17 fitur bertipe int64 dan 1 fitur bertipe float.
 + Tidak ada missing value dalam dataset.
 
 ### Variable - variable pada dataset
