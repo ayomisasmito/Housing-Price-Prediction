@@ -13,7 +13,7 @@ Dalam penelitian ini, akan disusun sebuah model machine learning yang bertujuan 
 
 <br>
 
-<div><img src="[https://user-images.githubusercontent.com/40420367/213976580-053f6395-463a-4bb0-b878-997365fa7498.jpg]" width="400"/></div>
+<div><img src="https://user-images.githubusercontent.com/40420367/213976580-053f6395-463a-4bb0-b878-997365fa7498.jpg" width="500"/></div>
 
 [Referensi gambar](https://palopopos.fajar.co.id/2022/07/11/cuaca-palopo-hari-ini-dan-besok-gerimis-diiringi-badai-petir/)
 
@@ -66,7 +66,7 @@ Univariate Analysis adalah menganalisis setiap fitur secara terpisah.
 
 #### Analisis sebaran pada setiap fitur numerik
 
-<div><img src="(https://user-images.githubusercontent.com/40420367/213976242-2bf41610-ffce-4c4f-b4b5-16f26f57ee5b.png)" width="450"/></div><br />
+<div><img src="https://user-images.githubusercontent.com/40420367/213976242-2bf41610-ffce-4c4f-b4b5-16f26f57ee5b.png" width="450"/></div><br />
 Berikut analisis dari grafik di atas :
 
 + Curah hujan / precipitation banyak yang berada dakam range 0-1.
@@ -78,9 +78,66 @@ Berikut analisis dari grafik di atas :
 
 Multivariate Analysis menunjukkan hubungan antara dua atau lebih fitur dalam data.
 
-#### Analisis fitur numerik
+#### Analisis numerik
   
 + Melihat kolerasi antara semua fitur numerik
-  <div><img src="https://user-images.githubusercontent.com/40420367/213976380-fa4f7288-be1f-4b1f-8f16-dff0684419b2.png" width="350"/></div>
-  Fitur BHK, Size, dan Bathroom berkorelasi tidak signifikan dengan fitur target (Rent). Hal ini mungkin   disebabkan oleh kurangnya data dalam penelitian ini.Fitur BHK dan Bathroom berkolerasi signifikan dengan fitur size. Hal ini sudah sesuai harapan dari penghapusan outlier yang sudah dilakukan sebelumnya.
+  <div><img src="https://user-images.githubusercontent.com/40420367/213976380-fa4f7288-be1f-4b1f-8f16-dff0684419b2.png" width="450"/></div>
+  Fitur temp_max, temp_min, precipitation, wind berkorelasi tidak signifikan dengan fitur target weather. Hal ini mungkin   disebabkan oleh kurangnya data dalam penelitian ini.Fitur temp_min dan temp_max berkorelasi dengan weather. 
 
+#### Data preparation
+
++ Train Test Split
+
+Train test split aja proses membagi data menjadi data latih dan data uji. Data latih akan digunakan untuk membangun model, sedangkan data uji akan digunakan untuk menguji performa model. Pada proyek ini dataset sebesar 1461 dibagi menjadi 1314 untuk data latih dan 147 untuk data uji.
+
++ Normalization
+
+Algoritma machine learning akan memiliki performa lebih baik dan bekerja lebih cepat jika dimodelkan dengan data seragam yang memiliki skala relatif sama. Salah satu teknik normalisasi yang digunakan pada proyek ini adalah Standarisasi dengan sklearn.preprocessing.StandardScaler.
+
+#### Modeling
+Algoritma Penelitian ini melakukan pemodelan dengan 3 algoritma, yaitu K-Nearest Neighbour, Random Forest, dan Boosting
+
++ Algoritma
+  Penelitian ini melakukan pemodelan dengan 3 algoritma, yaitu K-Nearest Neighbour, Random Forest, dan
+  + K-Nearest Neighbour
+    K-Nearest Neighbour bekerja dengan membandingkan jarak satu sampel ke sampel pelatihan lain dengan memilih sejumlah k tetangga terdekat. Proyek ini menggunakan [sklearn.neighbors.KNeighborsRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.neighbors.KNeighborsRegressor.html) dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
+    + `n_neighbors` = Jumlah k tetangga tedekat.
+
+  + Random Forest
+    Algoritma random forest adalah teknik dalam machine learning dengan metode ensemble. Teknik ini beroperasi dengan membangun banyak decision tree pada waktu pelatihan. Proyek ini menggunakan [sklearn.ensemble.RandomForestRegressor](https://scikit -learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html) dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
+    + `n_estimators` = Jumlah maksimum estimator di mana boosting dihentikan.
+    + `max_depth` = Kedalaman maksimum setiap tree.
+    + `random_state` = Mengontrol seed acak yang diberikan pada setiap base_estimator pada setiap iterasi boosting.
+
+  + Adaboost
+    AdaBoost juga disebut Adaptive Boosting adalah teknik dalam machine learning dengan metode ensemble.  Algoritma yang paling umum digunakan dengan AdaBoost adalah pohon keputusan (decision trees) satu tingkat yang berarti memiliki pohon Keputusan dengan hanya 1 split. Pohon-pohon ini juga disebut Decision Stumps. Algoritma ini bertujuan untuk meningkatkan performa atau akurasi prediksi dengan cara menggabungkan beberapa model sederhana dan dianggap lemah (weak learners) secara berurutan sehingga membentuk suatu model yang kuat (strong ensemble learner). Proyek ini menggunakan [sklearn.ensemble.AdaBoostRegressor](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostRegressor.html) dengan memasukkan X_train dan y_train dalam membangun model. Parameter yang digunakan pada proyek ini adalah :
+    + `n_estimators` = Jumlah maksimum estimator di mana boosting dihentikan.
+    + `learning_rate` = Learning rate memperkuat kontribusi setiap regressor.
+    + `random_state` = Mengontrol seed acak yang diberikan pada setiap base_estimator pada setiap iterasi boosting.
+
++ Hyperparameter Tuning (Grid Search)
+  Hyperparameter tuning adalah cara untuk mendapatkan parameter terbaik dari algoritma dalam membangun model. Salah satu teknik dalam hyperparameter tuning yang digunakan dalam proyek ini adalah grid search. Berikut adalah hasil dari Grid Search pada proyek ini :
+  | model    | best_params                                                     |
+  |----------|-----------------------------------------------------------------|
+  | knn      | {'n_neighbors': 50}                                              |
+  | boosting | {'learning_rate': 0.05, 'n_estimators': 55, 'random_state': 55} |
+  | rf       | {'max_depth': 16, 'n_estimators': 50, 'random_state': 55}        |
+  
+#### Evaluation
+
+Metrik evaluasi yang digunakan pada proyek ini adalah akurasi dan mean squared error (MSE). Akurasi menentukan tingkat kemiripan antara hasil prediksi dengan nilai yang sebenarnya (y_test). Mean squared error (MSE) mengukur error dalam model statistik dengan cara menghitung rata-rata error dari kuadrat hasil aktual dikurang hasil prediksi. Berikut formulan MSE :
+<div><img src="https://user-images.githubusercontent.com/107544829/188412654-f5dc0ae1-901b-470e-aae5-1f6b5fb68b4d.png](https://www.dicoding.com/academies/319/tutorials/18595#)" width="300"/></div>
+
+Berikut hasil evaluasi pada proyek ini :
+
++ Akurasi
+  | model    | accuracy |
+  |----------|----------|
+  | knn      | 0.726775 |
+  | boosting | 0.898556 |
+  | rf       | 0.932057 |
+
++ Mean Squared Error (MSE)
+  <div><img src="https://user-images.githubusercontent.com/107544829/188413846-7d5454b5-7f83-488e-836f-4f3593eb3d5d.png" width="300"/></div>
+
+Dari hasil evaluasi dapat dilihat bahwa model dengan algoritma Random Forest memiliki akurasi lebih tinggi tinggi dan tingkat error lebih kecil dibandingkan algoritma lainnya dalam proyek ini.
