@@ -1,14 +1,15 @@
-# Proyek Pertama Prediction Housing Price in Paris 
-
+# Proyek Pertama Weather Prediction
 #### Disusun oleh : Ayomi Sasmito
 
-Proyek pertama predictive analysis dicoding. Proyek ini membuat model machine learning untuk memprediksi harga rumah di paris
+Proyek pertama predictive analysis dicoding. Proyek ini membuat model machine learning untuk memprediksicuaca berdasarkan data yang diberikan.
 
 ## Domain Proyek
 
 ### Latar Belakang
 
-Rumah adalah tempat untuk melepaskan lelah, tempat bergaul, dan membina rasa kekeluargaan diantara anggota keluarga, tempat berlindung keluarga dan menyimpan barang berharga, dan rumah juga sebagai status lambang sosial (Azwar, 1996; Mukono, 2000).
+Cuaca merupakan keadaan udara pada saat tertentu dan di wilayah tertentu yang relatif sempit pada jangka waktu yang singkat. Cuaca terbentuk dari gabungan unsur cuaca dan jangka waktu cuaca bisa hanya beberapa jam saja. Misalnya pagi hari, siang hari, sore hari atau malam hari dan keadaannya bisa berbeda-beda untuk setiap tempat serta setiap jamnya. Di Indonesia keadaan cuaca selalu diumumkan untuk jangka waktu sekitar 24 jam melalui prediksi cuaca yang dikembangkan oleh Badan Meteorologi Klimatologi dan Geofisika (BMKG), Departemen Perhubungan. Selain di Indonesia , dinegara lain memiliki lembaga khusus untuk memberikan prediksi cuaca yang akan terjadi dalam 24 jam. Kemungkinan cuaca yang akan terjadi adalah berawan, berkabut, hujan, berawan, salju. 
+
+Dalam penelitian ini, akan disusun sebuah model machine learning yang bertujuan untuk memprediksi cuaca yang akan terjadi dan melakukan perbandingan antara model-model yang ada. Model yang dibuat nantinya akan di evaluasi dengan menggunakan Mean Square Error (MSE) dan kemudian akan dipilih manakah MSE terkecil yang menunjukkan model terbaik yang akan digunakan dalam machine learning.
 
 <br>
 
@@ -17,30 +18,20 @@ Rumah adalah tempat untuk melepaskan lelah, tempat bergaul, dan membina rasa kek
 [Referensi gambar](https://rumah123.com)
 
 <br>
-Setiap rumah memiliki harga yang bervariasi berdasarkan fitur yang ditawarkan didalamnya. Harga yang bervariasi tersebut menyebabkan ketidakpastian yang tinggi dan sulit jika memprediksi harga rumah secara akurat di masa depan. Ketidakpastian ini dapat diminimalisir dengan membuat sebuah sistem prediksi yang dapat menentukan berapa harga yang layak diberikan untuk karakteristik rumah tertentu. 
 
-Untuk mencapai hal tersebut, perlu dilakukan sebuah prediksi terhadap harga sewa rumah atau yang dikenal dengan housing dengan menggunakan machine learning. Diharapkan dengan model ini , harga sewa mampu diprediksi sesuai dengan harga pasar. Prediksi ini juga akan menjadi saran untuk para developer dalam menyewa rumah dengan harga yang dapat mendatangkan profit bagi mereka. Di dalam model ini nantinya akan disimulasikan menggunakan dataset 
 
-Referensi : [Algoritma K-Nearest Neighbour untuk Memprediksi Harga Jual Tanah](https://journal.unhas.ac.id/index.php/jmsk/article/download/3399/1936/6761)
-
-## Business Understanding
-
-Proyek ini dibangun untuk developer dengan karakteristik bisnis sebagai berikut :
-
-+ Developer di paris memiliki sejumlah rumah kemudian menyewakannya ke calon pelanggan.
-+ Developer di paris membuka jasa konsultasi harga sewa rumah kepada para calon pelanggan.
+Referensi : [Prediksi Cuaca Kota Denpasar menggunakan Algoritma ELM dengan Optimasi Quantum Delta Particle Swarm Optimization](https://j-ptiik.ub.ac.id/index.php/j-ptiik/article/download/8746/4018/)
 
 ### Problem Statement
 
-1. Fitur apa yang paling berpengaruh terhadap harga sewa rumah di paris?
+1. Fitur apa yang paling berpengaruh terhadap cuaca pada hari ini ?
 2. Bagaimana cara memproses data agar dapat dilatih dengan baik oleh model?
-3. Berapa harga sewa rumah di pasaran berdasarkan karakteristik tertentu?
 
 ### Goals
 
-1. Mengetahui fitur yang paling berpengaruh pada harga sewa rumah di paris.
+1. Mengetahui fitur yang paling berpengaruh pada prediksi cuaca.
 2. Melakukan persiapan data untuk dapat dilatih oleh model.
-3. Membuat model machine learning yang dapat memprediksi harga sewa rumah seakurat mungkin berdasarkan karakteristik tertentu.
+3. Membuat model machine learning yang dapat memprediksi cuaca pada kondisi tertentu.
 
 ### Solution Statement
 
@@ -50,35 +41,24 @@ Proyek ini dibangun untuk developer dengan karakteristik bisnis sebagai berikut 
 
 ## Data Understanding & Removing Outlier
 
-Dataset yang digunakan dalam proyek ini merupakan data harga sewa rumah dengan berbagai karakteristik di India. Dataset ini dapat diunduh di [Kaggle : Paris Housing Dataset](https://www.kaggle.com/datasets/mssmartypants/paris-housing-price-prediction?select=ParisHousing.csv).
+Dataset yang digunakan dalam proyek ini merupakan data harga sewa rumah dengan berbagai karakteristik di India. Dataset ini dapat diunduh di [Kaggle : Weather Prediction](https://www.kaggle.com/datasets/ananthr1/weather-prediction).
 
 Berikut informasi pada dataset :
 
 + Dataset memiliki format CSV (Comma-Seperated Values).
-+ Dataset memiliki 10000 sample dengan 17 fitur.
-+ Dataset memiliki 17 fitur bertipe int64 dan 1 fitur bertipe float.
++ Dataset memiliki 1461 sample dengan 6 fitur.
++ Dataset memiliki 4 fitur bertipe int64 dan 2 fitur bertipe object.
 + Tidak ada missing value dalam dataset.
 
 ### Variable - variable pada dataset
-+ Square Meters : Luas Rumah.
-+ NumberOfRooms : Banyaknya ruangan.
-+ hasYard : Status adanya halaman.
-+ hasPool : Status adanya kolam renang. 
-+ Floors : Jumlah lantai dalam rumah. 
-+ cityCode : Jumlah Kota.
-+ cityPartRange : Semakin tinggi nilainya, semakin ekslusif lingkungan rumah tersebut.
-+ numPrevOwners - number of prevoious owners
-+ made year : tahun dibuat.
-+ isNewBuilt : Apakah bangunan baru
-+ hasStormProtector : Status adanya pelindung dari petir pada bangunan rumah
-+ basement : Luas basement.
-+ attic : Luas loteng.
-+ garage : Ukuran garasi.
-+ hasStorageRoom : Status adanya gudang.
-+ hasGuestRoom : Status adanya ruang tamu.
-+ price : Harga.
++ date - tanggal
++ precipitation - All forms in which water falls on the land surface and open water bodies as rain, sleet, snow, hail, or drizzle.
++ temp_max - Maximum Temperature
++ temp_min - Minimum Temperature
++ wind - wind speed
++ weather - output
 
-Dari ke 12 fitur dapat dilihat bahwa fitur Point of Contract dan Posted On tidak mempengaruhi harga sewa rumah sehingga akan dihapus. Hal ini dikarenakan kedua fitur tersebut tidak diperlukan dalam membangun model prediksi harga sewa.
+Dari ke 6 fitur dapat dilihat bahwa fitur date tidak mempengaruhi harga sewa rumah sehingga akan dihapus. Hal ini dikarenakan kedua fitur tersebut tidak diperlukan dalam membangun model prediksi cuaca.
 
 ### Univariate Analysis
 
