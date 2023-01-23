@@ -13,9 +13,9 @@ Dalam penelitian ini, akan disusun sebuah model machine learning yang bertujuan 
 
 <br>
 
-<div><img src="(https://d3p0bla3numw14.cloudfront.net/news-content/img/2021/05/21041605/rumah-idaman-minimalis.jpg)" width="600"/></div>
+<div><img src="[https://user-images.githubusercontent.com/40420367/213976580-053f6395-463a-4bb0-b878-997365fa7498.jpg]" width="400"/></div>
 
-[Referensi gambar]([https://rumah123.com](https://palopopos.fajar.co.id/2022/07/11/cuaca-palopo-hari-ini-dan-besok-gerimis-diiringi-badai-petir/))
+[Referensi gambar](https://palopopos.fajar.co.id/2022/07/11/cuaca-palopo-hari-ini-dan-besok-gerimis-diiringi-badai-petir/)
 
 <br>
 
@@ -41,7 +41,7 @@ Referensi : [Prediksi Cuaca Kota Denpasar menggunakan Algoritma ELM dengan Optim
 
 ## Data Understanding & Removing Outlier
 
-Dataset yang digunakan dalam proyek ini merupakan data harga sewa rumah dengan berbagai karakteristik di India. Dataset ini dapat diunduh di [Kaggle : Weather Prediction](https://www.kaggle.com/datasets/ananthr1/weather-prediction).
+Dataset yang digunakan dalam proyek ini merupakan data cuaca. Dataset ini dapat diunduh di [Kaggle : Weather Prediction](https://www.kaggle.com/datasets/ananthr1/weather-prediction).
 
 Berikut informasi pada dataset :
 
@@ -64,10 +64,9 @@ Dari ke 6 fitur dapat dilihat bahwa fitur date tidak mempengaruhi harga sewa rum
 
 Univariate Analysis adalah menganalisis setiap fitur secara terpisah.
 
-
 #### Analisis sebaran pada setiap fitur numerik
 
-<div><img src="(https://user-images.githubusercontent.com/40420367/213975355-faab7c51-e852-460a-af03-ba2ddb095a21.png)" width="450"/></div><br />
+<div><img src="(https://user-images.githubusercontent.com/40420367/213976242-2bf41610-ffce-4c4f-b4b5-16f26f57ee5b.png)" width="450"/></div><br />
 Berikut analisis dari grafik di atas :
 
 + Curah hujan / precipitation banyak yang berada dakam range 0-1.
@@ -82,6 +81,6 @@ Multivariate Analysis menunjukkan hubungan antara dua atau lebih fitur dalam dat
 #### Analisis fitur numerik
   
 + Melihat kolerasi antara semua fitur numerik
-  <div><img src="https://user-images.githubusercontent.com/107544829/188323797-8186246a-8cdd-4232-8bc7-bce615cf92d0.png" width="350"/></div>
+  <div><img src="https://user-images.githubusercontent.com/40420367/213976380-fa4f7288-be1f-4b1f-8f16-dff0684419b2.png" width="350"/></div>
   Fitur BHK, Size, dan Bathroom berkorelasi tidak signifikan dengan fitur target (Rent). Hal ini mungkin   disebabkan oleh kurangnya data dalam penelitian ini.Fitur BHK dan Bathroom berkolerasi signifikan dengan fitur size. Hal ini sudah sesuai harapan dari penghapusan outlier yang sudah dilakukan sebelumnya.
 
