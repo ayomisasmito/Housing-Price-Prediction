@@ -13,9 +13,9 @@ Dalam penelitian ini, akan disusun sebuah model machine learning yang bertujuan 
 
 <br>
 
-<div><img src="https://d3p0bla3numw14.cloudfront.net/news-content/img/2021/05/21041605/rumah-idaman-minimalis.jpg" width="600"/></div>
+<div><img src="(https://d3p0bla3numw14.cloudfront.net/news-content/img/2021/05/21041605/rumah-idaman-minimalis.jpg)" width="600"/></div>
 
-[Referensi gambar](https://rumah123.com)
+[Referensi gambar]([https://rumah123.com](https://palopopos.fajar.co.id/2022/07/11/cuaca-palopo-hari-ini-dan-besok-gerimis-diiringi-badai-petir/))
 
 <br>
 
@@ -64,47 +64,22 @@ Dari ke 6 fitur dapat dilihat bahwa fitur date tidak mempengaruhi harga sewa rum
 
 Univariate Analysis adalah menganalisis setiap fitur secara terpisah.
 
-#### Analisis jumlah nilai unique pada setiap fitur kategorik
-
-Fitur kategorik City, Furnishing Status, dan Tenant Preferred memiliki sebaran sample yang cukup merata.
-<div><img src="https://user-images.githubusercontent.com/107544829/188319357-fc12fffa-b709-4584-8363-778bc678b328.png" width="220"/></div> <div><img src="https://user-images.githubusercontent.com/107544829/188319651-02ddb783-da3d-41ed-9b5f-9525aaaf9ed1.png" width="220"/></div> <div><img src="https://user-images.githubusercontent.com/107544829/188319750-1f080942-7826-4eaf-a021-8b9f938a861a.png" width="220"/></div><br />
-
-Berikut adalah fitur dengan sample yang tidak merata :
-
-+ Area Type
-  <div><img src="https://user-images.githubusercontent.com/107544829/188318629-f474b626-a16a-4971-ab42-2c183d22b744.png" width="220"/></div>
-  Hanya terdapat 2 sample Built Area pada fitur Area Type. Untuk menghindari high dimensional data, maka kedua sample ini akan dihapus.
-
-+ Floor dan Area Locality
-  <div><img src="https://user-images.githubusercontent.com/107544829/188319871-603b24b8-26b2-449b-b42e-59501a4803a7.png" width="220"/></div>
-   <div><img src="https://user-images.githubusercontent.com/107544829/188319880-3226bd04-920e-4050-b5ab-38dec02fc524.png" width="220"/></div>
-  Fitur Floor dan Area Locality memiliki banyak sekali nilai unique. Untuk menghindari high dimensional data, maka kedua fitur ini akan dihapus.
 
 #### Analisis sebaran pada setiap fitur numerik
 
-<div><img src="https://user-images.githubusercontent.com/107544829/188320722-451f25bd-de65-4e09-9d0a-9d8835249492.png" width="450"/></div><br />
+<div><img src="(https://user-images.githubusercontent.com/40420367/213975355-faab7c51-e852-460a-af03-ba2ddb095a21.png)" width="450"/></div><br />
 Berikut analisis dari grafik di atas :
 
-+ Sebagian besar rumah memiliki 1 sampai 3 BHK dan 1 sampai 3 kamar mandi.
-+ Sebagian besar rumah memiliki luas di bawah 2000 sqft.
-+ Rentang harga sewa cukup tinggi, yaitu dari 1200 hingga 3500000. Namun, rata-rata harga rumah hanya 35003. Distribusi harga yang kurang bagus seperti ini dapat berimplikasi pada model.
++ Curah hujan / precipitation banyak yang berada dakam range 0-1.
++ Temperatur maksimum rata-rata adalah 16.3 derajat celcius.
++ Temperatur minimum rata-rata adalah 8.2 derajat celcius.
++ Kecepatan angin rata-rata adalah 3.2 
 
 ### Multivariate Analysis
 
 Multivariate Analysis menunjukkan hubungan antara dua atau lebih fitur dalam data.
 
 #### Analisis fitur numerik
-
-+ Fitur Size dan BHK (Menghapus BHK Outlier)
-  Kedua fitur ini dianalisis karena tidak biasa untuk rumah dengan 1 BHK memiliki luas 100 sqft. Untuk itu ditentukan treshold atau batas 300 sqft/bhk. Data yang berada di bawah batas akan dihapus. Hal ini menyebabkan berkurangnya jumlah sample sebesar 548.
-
-+ Fitur Size dan Rent (Menghapus Price per sqft Outlier)
-  Untuk memudahkan dalam mendeteksi outlier, maka dibuat fitur baru 'Price_per_sqft' dari kedua fitur tersebut untuk menganalisis harga sewa per luas sqft.
-  <div><img src="https://user-images.githubusercontent.com/107544829/188323140-6174b592-4c7b-4671-9acb-b49a621d2aba.png" width="220"/></div>
-  Dari sini dapat terlihat bahwa harga 571 per sqft sangat rendah dan harga 1400000 per sqft sangat tinggi. Untuk itu penghapusan outlier price per sqft outlier dengan mean dan one standard deviation yang telah dikelompokkan berdasarkan kota. Hal ini menyebabkan berkurangnya jumlah sample sebesar 497.
-
-+ Fitur Bathroom dan BHK (Menghapus Bathroom Outlier)
-  Kedua fitur ini dianalisis karena tidak biasa untuk rumah dengan 2 BHK memiliki 4 kamar mandi. Untuk itu ditentukan batas bahwa jumlah kamar mandi tidak boleh melebihi jumlah BHK + 2. Hal ini menyebabkan berkurangnya sample sebesar 3.
   
 + Melihat kolerasi antara semua fitur numerik
   <div><img src="https://user-images.githubusercontent.com/107544829/188323797-8186246a-8cdd-4232-8bc7-bce615cf92d0.png" width="350"/></div>
